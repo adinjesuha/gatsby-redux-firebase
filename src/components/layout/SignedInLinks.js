@@ -36,7 +36,7 @@ const LiItems = styled.li`
   }
 `
 
-const SignedInLinks = ({ signOut }) => {
+const SignedInLinks = ({ signOut, profile }) => {
   return (
     <Wrapper>
       <LiItems>
@@ -49,7 +49,7 @@ const SignedInLinks = ({ signOut }) => {
       </LiItems>
       <LiItems>
         <Link to="/app/dashboard" className="user">
-          AJ
+          {profile.initials}
         </Link>
       </LiItems>
     </Wrapper>

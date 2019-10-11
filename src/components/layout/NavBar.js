@@ -22,8 +22,12 @@ const Wrapper = styled.div`
   }
 `
 
-const NavBar = ({ auth }) => {
-  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
+const NavBar = ({ auth, profile }) => {
+  const links = auth.uid ? (
+    <SignedInLinks profile={profile} />
+  ) : (
+    <SignedOutLinks />
+  )
   if (!isLoaded(auth)) {
     return null
   } else {
@@ -41,6 +45,7 @@ const NavBar = ({ auth }) => {
 const mapStateToProps = state => {
   return {
     auth: state.firebase.auth,
+    profile: state.firebase.profile,
   }
 }
 

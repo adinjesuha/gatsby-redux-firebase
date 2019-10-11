@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { navigate } from "gatsby"
 import { signIn } from "../../store/actions/authActions"
 
 class SignIn extends Component {
@@ -17,7 +18,11 @@ class SignIn extends Component {
     this.props.signIn(this.state)
   }
   render() {
-    const { authError } = this.props
+    const { authError, auth } = this.props
+    if (auth.uid) {
+      navigate("/app/dashboard", { replace: true })
+      return null
+    }
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit}>
@@ -43,6 +48,7 @@ class SignIn extends Component {
 const mapStateToProps = state => {
   return {
     authError: state.auth.authError,
+    auth: state.firebase.auth,
   }
 }
 
