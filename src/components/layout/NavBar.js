@@ -2,6 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { connect } from "react-redux"
+import { isLoaded } from "react-redux-firebase"
 
 import SignedInLinks from "./SignedInLinks"
 import SignedOutLinks from "./SignedOutLinks"
@@ -22,16 +23,19 @@ const Wrapper = styled.div`
 `
 
 const NavBar = ({ auth }) => {
-  console.log(auth)
   const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />
-  return (
-    <NavContainer>
-      <Wrapper>
-        <Link to="/app/dashboard">Home</Link>
-        {links}
-      </Wrapper>
-    </NavContainer>
-  )
+  if (!isLoaded(auth)) {
+    return null
+  } else {
+    return (
+      <NavContainer>
+        <Wrapper>
+          <Link to="/app/dashboard">Home</Link>
+          {links}
+        </Wrapper>
+      </NavContainer>
+    )
+  }
 }
 
 const mapStateToProps = state => {

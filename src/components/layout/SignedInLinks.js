@@ -10,9 +10,20 @@ const Wrapper = styled.ul`
 `
 
 const LiItems = styled.li`
-  margin: 0 20px;
   &:last-child {
+    margin-left: 10px;
     margin-right: 0;
+  }
+  &:hover {
+    background: red;
+  }
+  &:hover:last-child {
+    background: none;
+  }
+  > a {
+    color: white;
+    display: inline-block;
+    padding: 20px 15px;
   }
   .user {
     background: #ec407b;
@@ -22,10 +33,6 @@ const LiItems = styled.li`
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-    margin: 10px 0;
-  }
-  > a {
-    color: white;
   }
 `
 

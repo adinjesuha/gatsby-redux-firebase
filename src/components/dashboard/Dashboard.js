@@ -24,15 +24,14 @@ const LeftPanel = styled.div`
 
 class Dashboard extends Component {
   render() {
-    // console.log(this.props.projects)
     const { projects } = this.props
     return (
       <Wrapper>
         <FlexContainer>
-          <LeftPanel className="col s12 m6">
+          <LeftPanel>
             <ProjectList projects={projects} />
           </LeftPanel>
-          <div className="col s12 m5">
+          <div>
             <Notifications />
           </div>
         </FlexContainer>

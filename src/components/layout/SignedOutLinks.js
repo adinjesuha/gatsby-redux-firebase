@@ -8,22 +8,16 @@ const Wrapper = styled.ul`
 `
 
 const LiItems = styled.li`
-  margin: 0 20px;
   &:last-child {
     margin-right: 0;
   }
-  .user {
+  &:hover {
     background: red;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin: 10px 0;
   }
   > a {
+    display: inline-block;
     color: white;
+    padding: 20px;
   }
 `
 
