@@ -24,7 +24,9 @@ const LeftPanel = styled.div`
 
 class Dashboard extends Component {
   render() {
-    const { projects } = this.props
+    const { projects, notifications } = this.props
+
+    console.log(notifications)
     return (
       <Wrapper>
         <FlexContainer>
@@ -32,7 +34,7 @@ class Dashboard extends Component {
             <ProjectList projects={projects} />
           </LeftPanel>
           <div>
-            <Notifications />
+            <Notifications notifications={notifications} />
           </div>
         </FlexContainer>
       </Wrapper>
@@ -41,12 +43,17 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     projects: state.firestore.ordered.projects,
+    notifications: state.firestore.ordered.notifications,
   }
 }
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "projects" }])
+  firestoreConnect([
+    { collection: "projects", orderBy: ["createdAt", "desc"] },
+    { collection: "notifications", limit: 3, orderBy: ["time", "desc"] },
+  ])
 )(Dashboard)

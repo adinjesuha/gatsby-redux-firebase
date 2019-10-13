@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { navigate } from "gatsby"
 import { createProject } from "../../store/actions/projectActions"
 
 class CreateProject extends Component {
@@ -14,8 +15,8 @@ class CreateProject extends Component {
   }
   handleSubmit = e => {
     e.preventDefault()
-    // console.log(this.state)
     this.props.createProject(this.state)
+    navigate("/app/dashboard", { replace: true })
   }
   render() {
     return (

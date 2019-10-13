@@ -2,7 +2,7 @@ import firebase from "firebase/app"
 import "firebase/firestore"
 import "firebase/auth"
 
-var firebaseConfig = {
+var config = {
   apiKey: "AIzaSyCEzlD-Ugrs_8XR6d_N0PZwwUdpGJTVZpE",
   authDomain: "gatsby-firebase-redux.firebaseapp.com",
   databaseURL: "https://gatsby-firebase-redux.firebaseio.com",
@@ -11,7 +11,7 @@ var firebaseConfig = {
   messagingSenderId: "799298956135",
 }
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig)
+firebase.initializeApp(config)
 // firebase.firestore().settings({ timestampsInSnapshots: true })
 
 export default firebase

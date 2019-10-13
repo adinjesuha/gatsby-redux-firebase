@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import moment from "moment"
 
 const Wrapper = styled.div`
   padding: 20px;
@@ -12,8 +13,10 @@ const ProjectSummary = ({ project }) => {
     <Wrapper className="card">
       <div className="card-content">
         <span>{project.title}</span>
-        <p>Posted by Adin Jesuha</p>
-        <p>9th October, 03:00 p.m.</p>
+        <p>
+          Posted by {project.authorFirstName} {project.authorLastName}
+        </p>
+        <p>{moment(project.createdAt.toDate().toString()).calendar()}</p>
       </div>
     </Wrapper>
   )

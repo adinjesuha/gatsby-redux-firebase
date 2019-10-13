@@ -22,24 +22,33 @@ const Wrapper = styled.div`
   }
 `
 
+//  if (!isLoaded(auth)) {
+//    return null
+//  } else {
+//    return (
+//      <NavContainer>
+//        <Wrapper>
+//          <Link to="/app/dashboard">Home</Link>
+//          {links}
+//        </Wrapper>
+//      </NavContainer>
+//    )
+//  }
+
 const NavBar = ({ auth, profile }) => {
   const links = auth.uid ? (
     <SignedInLinks profile={profile} />
   ) : (
     <SignedOutLinks />
   )
-  if (!isLoaded(auth)) {
-    return null
-  } else {
-    return (
-      <NavContainer>
-        <Wrapper>
-          <Link to="/app/dashboard">Home</Link>
-          {links}
-        </Wrapper>
-      </NavContainer>
-    )
-  }
+  return (
+    <NavContainer>
+      <Wrapper>
+        <Link to="/app/dashboard">Home</Link>
+        {isLoaded(auth) ? links : null}
+      </Wrapper>
+    </NavContainer>
+  )
 }
 
 const mapStateToProps = state => {

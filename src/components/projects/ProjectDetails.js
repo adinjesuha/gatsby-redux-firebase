@@ -3,6 +3,7 @@ import styled from "styled-components"
 import { connect } from "react-redux"
 import { firestoreConnect } from "react-redux-firebase"
 import { compose } from "redux"
+import moment from "moment"
 
 const Wrapper = styled.div`
   width: 100%;
@@ -10,8 +11,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `
 
-const ProjectDetails = props => {
-  const { project } = props
+const ProjectDetails = ({ project }) => {
   if (project) {
     return (
       <Wrapper className="project-details">
@@ -25,7 +25,7 @@ const ProjectDetails = props => {
             <div>
               Poster by {project.authorFirstName} {project.authorLastName}
             </div>
-            <p> th October, 03:00 p.m.</p>
+            <p>{moment(project.createdAt.toDate().toString()).calendar()}</p>
           </div>
         </div>
       </Wrapper>
